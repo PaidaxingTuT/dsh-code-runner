@@ -118,7 +118,7 @@ function injectStyle(): void {
   padding: 0;
   margin-left: 2px;
   border: none;
-  border-radius: 4px;
+  border-radius: 50%;
   background: transparent;
   color: var(--dsw-alias-label-secondary, #8a8f98);
   cursor: pointer;
@@ -155,7 +155,7 @@ function syncRunButtons(ctx: ClientContext): void {
     button.dataset.dshCodeRunnerRun = ''
     button.className = 'dsh-code-runner-run'
     button.setAttribute('aria-label', '运行代码')
-    button.title = '运行代码 (Code Runner)'
+    button.title = '运行代码'
     button.textContent = '▶'
     button.addEventListener('click', (event) => {
       event.preventDefault()
