@@ -1,0 +1,16 @@
+{
+  "id": "dsh-code-runner",
+  "version": "0.1.0",
+  "main": "./lib/index.js",
+  "description": "在 DSH-better-sidebar 的代码文件头部添加运行按钮，在底部终端运行当前文件",
+  "engines": {
+    "dsh": ">=0.0.1"
+  },
+  "contributes": {
+    "tools": [],
+    "skills": []
+  },
+  "client": {
+    "main": "./lib/client.js"
+  }
+}

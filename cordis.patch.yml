@@ -1,0 +1,15 @@
+# dsh-code-runner bundle patch
+#
+# dsh-code-runner is built on dsh-better-sidebar. When this patch is applied
+# and dsh-better-sidebar is not already mounted, it mounts it first so the
+# run button and terminal integration work out of the box.
+#
+# The better-sidebar row backs off when ANY loader entry with that package
+# name already exists (enabled or disabled): we never create a duplicate
+# mount, and we never re-enable a user-disabled instance.
+- insert:
+    - id: better-sidebar
+      name: 'dsh-better-sidebar'
+      disabled: !!js "[...ctx.loader.entries()].some((e) => e.options.name === 'dsh-better-sidebar')"
+    - id: dsh-code-runner
+      name: 'dsh-code-runner'
