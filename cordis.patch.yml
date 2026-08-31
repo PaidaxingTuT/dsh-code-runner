@@ -4,12 +4,11 @@
 # and dsh-better-sidebar is not already mounted, it mounts it first so the
 # run button and terminal integration work out of the box.
 #
-# The better-sidebar row backs off when ANY loader entry with that package
-# name already exists (enabled or disabled): we never create a duplicate
-# mount, and we never re-enable a user-disabled instance.
+# The fallback uses a private id so it can coexist with the official sidebar
+# entry while still letting only the first mount own the singleton service.
 - insert:
-    - id: better-sidebar
+    - id: code-runner-better-sidebar
       name: 'dsh-better-sidebar'
-      disabled: !!js "[...ctx.loader.entries()].some((e) => e.options.name === 'dsh-better-sidebar')"
+      disabled: !!js "[...ctx.loader.entries()].find((e) => e.options.name === 'dsh-better-sidebar')?.options.id !== 'code-runner-better-sidebar'"
     - id: dsh-code-runner
       name: 'dsh-code-runner'
